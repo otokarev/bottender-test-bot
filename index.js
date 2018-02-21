@@ -1,11 +1,11 @@
-const { TelegramBot, RedisSessionStore } = require('bottender');
+const { TelegramBot, FileSessionStore } = require('bottender');
 const { createServer } = require('bottender/express');
 
 const config = require('./bottender.config.js').telegram;
 
 const bot = new TelegramBot({
   accessToken: config.accessToken,
-  sessionStore: new RedisSessionStore(),
+  sessionStore: new FileSessionStore(),
 });
 
 bot.onEvent(async context => {
